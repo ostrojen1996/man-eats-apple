@@ -3,17 +3,13 @@
 require __DIR__.'/vendor/autoload.php';
 
 use models\{
-    Food,
-    Man,
-    Log
+    Apple,
+    Man
 };
 
 
-$man = new Man(new Log());
-$apple = new Food([
-    'volume'   => 3,
-    'name'     => 'Apple'
-]);
+$man = new Man();
+$apple = new Apple();
 
 $man->eat($apple);
 

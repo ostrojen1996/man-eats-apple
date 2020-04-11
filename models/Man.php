@@ -1,9 +1,10 @@
 <?php
 namespace models;
 
+use models\Log;
 use interfaces\{
-    Food,
-    Log
+    Food as FoodInterface,
+    Log as LogInterface
 };
 
 /**
@@ -16,12 +17,28 @@ class Man
 
     private $log;
 
-    function __construct(Log $log)
+    function __construct()
     {
-        $this->log = $log;
+        $this->log = new Log();
     }
 
-    public function eat(Food $food): self
+    /**
+     * 
+     * @param Log $log
+     * @return self
+     */
+    public function setLog(LogInterface $log): self
+    {
+        $this->log = $log;
+        return $this;
+    }
+
+    /**
+     * 
+     * @param Food $food
+     * @return self
+     */
+    public function eat(FoodInterface $food): self
     {
         if($food->isEdible()){
             if($food->isBitten()){
